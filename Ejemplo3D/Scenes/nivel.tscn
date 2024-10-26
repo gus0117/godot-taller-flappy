@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://1hfu4wtj3a26"]
+
+[ext_resource type="PackedScene" uid="uid://htkouqlt5qmr" path="res://Ejemplo3D/Assets/3DModels/ambulance.fbx" id="1_bxi3d"]
+
+[node name="Nivel" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="ambulance" parent="Node3D" instance=ExtResource("1_bxi3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199711, 0, 0)

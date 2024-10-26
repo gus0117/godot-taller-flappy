@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://clwvclu5x2f3a"]
+
+[ext_resource type="Texture2D" uid="uid://m1n1nk4fb7v7" path="res://FlappyBird/Assets/Sprites/background-day.png" id="1_08bll"]
+[ext_resource type="Script" path="res://FlappyBird/Scripts/main_menu.gd" id="1_m02i5"]
+[ext_resource type="FontFile" uid="uid://pintenodiyfw" path="res://FlappyBird/Assets/fonts/flappy-font.ttf" id="2_npon1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wswhh"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0.270958, 0.722933, 0.614105, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(3.1285e-07, 0.417341, 0.348812, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ej0yu"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0.925115, 0.512045, 0.125963, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(3.1285e-07, 0.417341, 0.348812, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_qimut"]
+font = ExtResource("2_npon1")
+font_size = 40
+font_color = Color(1, 0.87451, 0.0235294, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 13
+shadow_color = Color(0.201527, 0.201527, 0.201527, 1)
+shadow_offset = Vector2(3, 3)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m02i5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_08bll")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -26.0
+offset_right = 63.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_npon1")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_wswhh")
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = 47.0
+offset_right = 64.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_npon1")
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_ej0yu")
+text = "QUIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -112.0
+offset_top = 42.0
+offset_right = 117.0
+offset_bottom = 83.0
+grow_horizontal = 2
+text = "FLAPPY BIRD"
+label_settings = SubResource("LabelSettings_qimut")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

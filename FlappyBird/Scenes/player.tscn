@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://w6d34f0euoqo"]
+
+[ext_resource type="Texture2D" uid="uid://cql4j3m4sp4le" path="res://FlappyBird/Assets/Sprites/yellowbird-midflap.png" id="1_jialy"]
+[ext_resource type="Script" path="res://FlappyBird/Scripts/player.gd" id="1_qew8v"]
+[ext_resource type="Texture2D" uid="uid://ckeknu5wfj4pr" path="res://FlappyBird/Assets/Sprites/yellowbird-downflap.png" id="2_cncdm"]
+[ext_resource type="Texture2D" uid="uid://cf22fxdk2gjan" path="res://FlappyBird/Assets/Sprites/yellowbird-upflap.png" id="3_k8kow"]
+[ext_resource type="AudioStream" uid="uid://bgdybp4lv5c62" path="res://FlappyBird/Assets/SFX/wing.ogg" id="5_l6jcf"]
+[ext_resource type="AudioStream" uid="uid://b83yk1e814gtx" path="res://FlappyBird/Assets/SFX/die.ogg" id="6_ljnxf"]
+[ext_resource type="AudioStream" uid="uid://cgt38j5u1i8jb" path="res://FlappyBird/Assets/SFX/hit.ogg" id="7_giyfx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op1ck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jialy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cncdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_jialy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_k8kow")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywd0q"]
+radius = 11.7047
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_qew8v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_op1ck")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ywd0q")
+
+[node name="SFXSalto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_l6jcf")
+
+[node name="SFXCaida" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ljnxf")
+
+[node name="SFXGolpe" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_giyfx")

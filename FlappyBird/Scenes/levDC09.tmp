@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cytyrssvcdaar"]
+
+[ext_resource type="Texture2D" uid="uid://m1n1nk4fb7v7" path="res://FlappyBird/Assets/Sprites/background-day.png" id="1_6euj5"]
+[ext_resource type="Script" path="res://FlappyBird/Scripts/level.gd" id="1_wps37"]
+[ext_resource type="Texture2D" uid="uid://b4oqgymx5ypgq" path="res://FlappyBird/Assets/Sprites/base.png" id="2_pijlq"]
+[ext_resource type="PackedScene" uid="uid://w6d34f0euoqo" path="res://FlappyBird/Scenes/player.tscn" id="3_e60el"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_wps37")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="."]
+repeat_size = Vector2(288, 0)
+autoscroll = Vector2(-20, 0)
+
+[node name="Background-day" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(144, 256)
+texture = ExtResource("1_6euj5")
+
+[node name="ParallaxFloor" type="Parallax2D" parent="."]
+repeat_size = Vector2(336, 0)
+autoscroll = Vector2(-60, 0)
+
+[node name="Base" type="Sprite2D" parent="ParallaxFloor"]
+position = Vector2(144, 464)
+texture = ExtResource("2_pijlq")
+
+[node name="Player" parent="." instance=ExtResource("3_e60el")]
+position = Vector2(64, 157)

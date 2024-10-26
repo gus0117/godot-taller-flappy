@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckchetw7g3pln"]
+
+[ext_resource type="Texture2D" uid="uid://cnpu5syc3dawg" path="res://FlappyBird/Assets/Sprites/pipe-green.png" id="1_cvpg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m53gt"]
+size = Vector2(40, 316)
+
+[node name="Pipe" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cvpg1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_m53gt")
+debug_color = Color(0.94415, 0.147774, 0.468558, 0.42)

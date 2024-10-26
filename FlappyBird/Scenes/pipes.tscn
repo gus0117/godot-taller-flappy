@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqly5taa1214i"]
+
+[ext_resource type="Script" path="res://FlappyBird/Scripts/pipes_movement.gd" id="1_hsj5e"]
+[ext_resource type="PackedScene" uid="uid://ckchetw7g3pln" path="res://FlappyBird/Scenes/pipe.tscn" id="1_jymlc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_af08f"]
+size = Vector2(20, 122)
+
+[node name="Pipes" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_hsj5e")
+speed = 80.0
+bottomLimit = 300
+topLimit = 100
+
+[node name="PipeBottom" parent="." instance=ExtResource("1_jymlc")]
+position = Vector2(0, 220)
+
+[node name="PipeTop" parent="." instance=ExtResource("1_jymlc")]
+position = Vector2(0, -220)
+rotation = 3.14159
+
+[node name="Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("RectangleShape2D_af08f")
+debug_color = Color(0, 0.745081, 0.498107, 0.42)
+
+[connection signal="body_entered" from="PipeBottom" to="." method="_on_pipe_bottom_body_entered"]
+[connection signal="body_entered" from="PipeTop" to="." method="_on_pipe_top_body_entered"]
+[connection signal="body_shape_exited" from="Detector" to="." method="_on_detector_body_shape_exited"]
