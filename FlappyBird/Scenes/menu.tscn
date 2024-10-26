@@ -1,0 +1,127 @@
+[gd_scene load_steps=9 format=3 uid="uid://djba61k775yvf"]
+
+[ext_resource type="Texture2D" uid="uid://m1n1nk4fb7v7" path="res://FlappyBird/Assets/Sprites/background-day.png" id="1_j6vhj"]
+[ext_resource type="Script" path="res://FlappyBird/Scripts/menu.gd" id="1_utt0c"]
+[ext_resource type="FontFile" uid="uid://pintenodiyfw" path="res://FlappyBird/Assets/fonts/flappy-font.ttf" id="2_f7qu6"]
+[ext_resource type="PackedScene" uid="uid://cytyrssvcdaar" path="res://FlappyBird/Scenes/level.tscn" id="2_u1628"]
+[ext_resource type="Texture2D" uid="uid://ckeknu5wfj4pr" path="res://FlappyBird/Assets/Sprites/yellowbird-downflap.png" id="3_mbatq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_alxc0"]
+font = ExtResource("2_f7qu6")
+font_size = 30
+font_color = Color(1, 0.8, 0.0588235, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.741176)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4gnb"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.394645, 0.85534, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(5.11389e-08, 0.194266, 0.0497413, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aysk"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.858598, 0.0425996, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(5.11389e-08, 0.194266, 0.0497413, 1)
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 9
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_utt0c")
+main_level = ExtResource("2_u1628")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j6vhj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 58.0
+offset_right = 86.0
+offset_bottom = 89.0
+grow_horizontal = 2
+text = "FLAPPY BIRD"
+label_settings = SubResource("LabelSettings_alxc0")
+
+[node name="BtnPlay" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -17.0
+offset_right = 49.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.881188, 0.452542, 0, 1)
+theme_override_fonts/font = ExtResource("2_f7qu6")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_h4gnb")
+text = "PLAY"
+icon = ExtResource("3_mbatq")
+
+[node name="BtnQuit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 28.0
+offset_right = 50.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.955752, 0.927917, 1)
+theme_override_fonts/font = ExtResource("2_f7qu6")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_8aysk")
+text = "QUIT"
+
+[connection signal="pressed" from="BtnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="BtnQuit" to="." method="_on_btn_quit_pressed"]
